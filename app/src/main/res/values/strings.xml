@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">PrivadoHealthApp</string>
+    <string name="facebook_application_id">605329257786546</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">034a40ea17dfe53c91efc8b095c7e072</string>
+    <!--<key>SCSDKScopes</key>
+    <array>
+        <string>https://auth.snapchat.com/oauth2/api/user.bitmoji.avatar</string>
+        <string>https://auth.snapchat.com/oauth2/api/user.display_name</string>
+        &lt;!&ndash; other scopes you might have... &ndash;&gt;
+    </array>-->
+    <string-array name="snap_connect_scopes">
+        <item>https://auth.snapchat.com/oauth2/api/user.bitmoji.avatar</item>
+        <item>https://auth.snapchat.com/oauth2/api/user.display_name</item>
+    </string-array>
+    <string name="snapchat_app_id">f5d6b19d-9e55-4603-b381-595723640c14</string>
+    <string name="snap_pixel_id">3719483a-34e8-4300-95cc-d4d217f6d807</string>
+    <string name="amplitude_api_key">b45d01e2c9fcc51000d3d86a89188bac</string>
+    <string name="mixpanel_token">46503cf1519a6f3976f252e3b208af15</string>
+    <string name="criteo_id">1234</string>
+</resources>

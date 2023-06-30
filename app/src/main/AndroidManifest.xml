@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <meta-data
+        android:name="com.facebook.sdk.ApplicationId"
+        android:value="@string/facebook_application_id" />
+    <meta-data
+        android:name="com.facebook.sdk.ClientToken"
+        android:value="@string/facebook_client_token" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
+    <queries>
+        <package android:name="com.facebook.katana" />
+        <package android:name="com.snapchat.android" />
+    </queries>
+
+    <application
+        android:name=".MyApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppToDemoStaticCodeAnalysis"
+        tools:targetApi="31">
+        <activity
+            android:name=".views.PharmacyInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.DrugInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.PersonalInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.SignupActivity"
+            android:exported="false" /> <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-5474974639695681~7297711917" />
+        <meta-data
+            android:name="com.snap.kit.clientId"
+            android:value="@string/snapchat_app_id" />
+        <meta-data
+            android:name="com.snap.kit.redirectUrl"
+            android:value="the url that will handle login completion" />
+        <meta-data
+            android:name="com.snap.kit.scopes"
+            android:resource="@array/snap_connect_scopes" /> <!-- This should be a string array of scopes ! -->
+        <!--
+  <activity android:name="com.snapchat.kit.sdk.SnapKitActivity"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            />
+
+        <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                    Enter the parts of your redirect url below
+                    e.g., if your redirect url is myapp://snap-kit/oauth2
+                        android:scheme="myapp"
+                        android:host="snap-kit"
+                        android:path="oauth2"
+               s
+                <data
+                    android:scheme="the scheme of your redirect url"
+                    android:host="the host of your redirect url"
+                    android:path="the path of your redirect url"
+                    />
+            </intent-filter>
+
+        </activity>
+        -->
+        <activity
+            android:name=".views.LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

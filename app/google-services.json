@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "672372484963",
+    "project_id": "privadohealthdemo",
+    "storage_bucket": "privadohealthdemo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:672372484963:android:66fa1d2de600cded64c156",
+        "android_client_info": {
+          "package_name": "io.privado.apptodemostaticcodeanalysis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "672372484963-msq084bjovlddn9ak22lhoeqte7p1075.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArj4DD27Kn60nAzG2OrIzNxk56SPqqy24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "672372484963-msq084bjovlddn9ak22lhoeqte7p1075.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
