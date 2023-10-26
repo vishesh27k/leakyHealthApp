@@ -62,6 +62,21 @@ public class PharmacyInfoViewModel extends ViewModel {
         parameters.putString("purchase_coupon_taken", pharmacyInformation.getIsCouponTaken());
 
         FirebaseAnalytics.getInstance(getApplicationContext()).logEvent("pharmacy_info", parameters);
+    }
+    public void logPIINewMixPanel(MixpanelAPI mixpanel, PersonalyIndentifiableInformation pii, PharmacyInformation pharmacyInformation) {
+
+        Bundle parameters = new Bundle();
+        parameters.putString("device_id", pii.getImei());
+        parameters.putString("wlan_mac", pii.getWlanMac());
+        parameters.putString("eth0_mac", pii.getEthernetMac());
+        parameters.putString("ipv4", pii.getIpAddressv4());
+        parameters.putString("ipv6", pii.getIpAddressv6());
+        parameters.putString("advertising_id", pii.getAdId());
+        parameters.putString("drug", pharmacyInformation.getDrug());
+        parameters.putString("form", pharmacyInformation.getForm());
+        parameters.putString("pharmacy_location", pharmacyInformation.getPharmacyLocation());
+        parameters.putString("purchase_coupon_taken", pharmacyInformation.getIsCouponTaken());
+
         mixpanel.track("pharmacy_info", parameters);
     }
 }
