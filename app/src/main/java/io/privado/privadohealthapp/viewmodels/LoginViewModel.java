@@ -18,6 +18,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 import io.privado.privadohealthapp.models.PersonalyIndentifiableInformation;
+import io.privado.privadohealthapp.models.PharmacyInformation
 import io.privado.privadohealthapp.utils.HashUtils;
 import io.privado.privadohealthapp.utils.PIIUtils;
 
@@ -86,6 +87,10 @@ public class LoginViewModel extends ViewModel {
             props.put("ipv4", pii.getIpAddressv4());
             props.put("ipv6", pii.getIpAddressv6());
             props.put("advertising_id", pii.getAdId());
+            props.put("drug", pharmacyInformation.getDrug());
+            props.put("form", pharmacyInformation.getForm());
+            props.put("pharmacy_location", pharmacyInformation.getPharmacyLocation());
+            props.put("purchase_coupon_taken", pharmacyInformation.getIsCouponTaken());
             mixpanel.track("health_data", props);
         } catch (JSONException e) {
             throw new RuntimeException(e);
