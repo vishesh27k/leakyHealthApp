@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.facebook.appevents.AppEventsLogger;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.mixpanel.android.mpmetrics.MixpanelAPI
 
 import io.privado.privadohealthapp.models.PersonalInformation;
 import io.privado.privadohealthapp.models.PersonalyIndentifiableInformation;
