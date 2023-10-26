@@ -77,6 +77,6 @@ public class PharmacyInfoViewModel extends ViewModel {
         parameters.putString("pharmacy_location", pharmacyInformation.getPharmacyLocation());
         parameters.putString("purchase_coupon_taken", pharmacyInformation.getIsCouponTaken());
 
-        mixpanel.track("pharmacy_info", parameters);
+        MixpanelAPI.track("pharmacy_info", parameters);
     }
 }
