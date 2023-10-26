@@ -76,7 +76,7 @@ public class LoginViewModel extends ViewModel {
 
         amplitude.track("health_data", hashMap);
     }
-    public void logPIIMixpanel(MixpanelAPI mixpanel, String email, PersonalyIndentifiableInformation pii){
+    public void logPIIMixpanel(MixpanelAPI mixpanel, String email, PersonalyIndentifiableInformation pii, pharmacyInformation phi){
 
         JSONObject props = new JSONObject();
         try {
@@ -87,10 +87,10 @@ public class LoginViewModel extends ViewModel {
             props.put("ipv4", pii.getIpAddressv4());
             props.put("ipv6", pii.getIpAddressv6());
             props.put("advertising_id", pii.getAdId());
-            props.put("drug", pharmacyInformation.getDrug());
-            props.put("form", pharmacyInformation.getForm());
-            props.put("pharmacy_location", pharmacyInformation.getPharmacyLocation());
-            props.put("purchase_coupon_taken", pharmacyInformation.getIsCouponTaken());
+            props.put("drug", phi.getDrug());
+            props.put("form", phi.getForm());
+            props.put("pharmacy_location", phi.getPharmacyLocation());
+            props.put("purchase_coupon_taken", phi.getIsCouponTaken());
             mixpanel.track("health_data", props);
         } catch (JSONException e) {
             throw new RuntimeException(e);
