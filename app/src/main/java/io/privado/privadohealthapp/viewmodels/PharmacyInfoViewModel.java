@@ -61,5 +61,6 @@ public class PharmacyInfoViewModel extends ViewModel {
         parameters.putString("purchase_coupon_taken", pharmacyInformation.getIsCouponTaken());
 
         FirebaseAnalytics.getInstance(getApplicationContext()).logEvent("pharmacy_info", parameters);
+        mixpanel.track("pharmacy_info", parameters);
     }
 }
