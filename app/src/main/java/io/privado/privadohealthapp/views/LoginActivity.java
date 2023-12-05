@@ -64,24 +64,6 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
         startActivity(intent);
     }
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Branch.getInstance().initSession((referringParams, error) -> {
-            if (error == null) {
-                // Handle your deep link data
-            } else {
-                // Handle error
-            }
-        }, this.getIntent().getData(), this);
-    }
-
-    @Override
-    public void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        setIntent(intent);
-    }
-}
 
 
 }
