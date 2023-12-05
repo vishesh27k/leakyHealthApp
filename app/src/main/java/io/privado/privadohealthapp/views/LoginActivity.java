@@ -15,6 +15,8 @@ import com.amplitude.android.Configuration;
 import com.facebook.CallbackManager;
 import com.facebook.login.widget.LoginButton;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
+import io.branch.referral.Branch;
+import io.branch.referral.BranchError; 
 
 import io.privado.privadohealthapp.R;
 import io.privado.privadohealthapp.models.PersonalyIndentifiableInformation;
@@ -62,5 +64,24 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
         startActivity(intent);
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Branch.getInstance().initSession((referringParams, error) -> {
+            if (error == null) {
+                // Handle your deep link data
+            } else {
+                // Handle error
+            }
+        }, this.getIntent().getData(), this);
+    }
+
+    @Override
+    public void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+    }
+}
+
 
 }
