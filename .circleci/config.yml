@@ -36,7 +36,7 @@ jobs:
 workflows:
   build-and-test:
     jobs:
-  privado_scan:
+      - privado_scan:
     docker:
       - image: cimg/base:stable
     steps:
