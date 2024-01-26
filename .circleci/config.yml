@@ -40,7 +40,7 @@ jobs:
             echo "PRIVADO_COMMIT_ID=$CIRCLE_SHA1"
             echo "PRIVADO_BRANCH_NAME=$CIRCLE_BRANCH"
             echo "PRIVADO_DEFAULT_BRANCH_NAME=$CIRCLE_BRANCH"
-            echo "PRIVADO_REPOSITORY_URL=${CIRCLE_REPOSITORY_URL}"
+            echo "PRIVADO_REPOSITORY_URL=$CIRCLE_REPOSITORY_URL"
 
             # Set environment variables for Privado
             echo "PRIVADO_API_TOKEN=$PRIVADO_API_TOKEN" > $CIRCLE_WORKING_DIRECTORY/.privado.env
