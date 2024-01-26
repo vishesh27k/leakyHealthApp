@@ -28,7 +28,7 @@ jobs:
           name: Run Privado Scan
           command: |
             PRIVADO_BASE_PATH=$CIRCLE_WORKING_DIRECTORY/privado-workdir
-            PRIVADO_REPO_PATH="$PRIVADO_BASE_PATH/repositories/$PRIVADO_API_ID/${CIRCLE_PROJECT_REPONAME}"
+            PRIVADO_REPO_PATH="$PRIVADO_BASE_PATH/repositories/$PRIVADO_API_ID/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}"
             mkdir -p $PRIVADO_REPO_PATH
             rsync -a --exclude="$(basename $PRIVADO_BASE_PATH)" . $PRIVADO_REPO_PATH
             ls . $PRIVADO_REPO_PATH
