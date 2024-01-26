@@ -36,7 +36,53 @@ jobs:
 workflows:
   build-and-test:
     jobs:
-      - test-java
+  privado_scan:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.7
+      - run:
+          name: Login and pull latest Docker image
+          command: |
+            echo "Login to Docker registry"
+            PRIVADO_API_TOKEN=$PRIVADO_API_TOKEN
+            PRIVADO_API_HOST=$PRIVADO_API_HOST
+            PRIVADO_API_ID=$PRIVADO_API_ID
+
+            TOKEN=$(curl -s -H 'Content-Type: application/json' -H "Authorization: Token $PRIVADO_API_TOKEN" -H "idt: $PRIVADO_API_TOKEN" -H 'data-url: /ce/integrations/customers/${PRIVADO_API_ID}/docker-registry-token' "${PRIVADO_API_HOST}/ce/integrations/customers/${PRIVADO_API_ID}/docker-registry-token?ci=true")
+            echo $TOKEN | docker login --username AWS --password-stdin 638117407428.dkr.ecr.eu-west-1.amazonaws.com
+            echo "Pulling latest Docker image"
+            docker pull 638117407428.dkr.ecr.eu-west-1.amazonaws.com/scanner-agent:latest
+      - run:
+          name: Run Privado Scan
+          command: |
+            PRIVADO_BASE_PATH=$CIRCLE_WORKING_DIRECTORY/privado-workdir
+            PRIVADO_REPO_PATH="$PRIVADO_BASE_PATH/repositories/$PRIVADO_API_ID/${CIRCLE_PROJECT_REPONAME}"
+            mkdir -p $PRIVADO_REPO_PATH
+            rsync -a --exclude="$(basename $PRIVADO_BASE_PATH)" . $PRIVADO_REPO_PATH
+
+            # Set environment variables for Privado
+            echo "PRIVADO_API_TOKEN=$PRIVADO_API_TOKEN" > $CIRCLE_WORKING_DIRECTORY/.privado.env
+            echo "PRIVADO_API_ID=$PRIVADO_API_ID" >> $CIRCLE_WORKING_DIRECTORY/.privado.env
+            echo "PRIVADO_API_HOST=$PRIVADO_API_HOST" >> $CIRCLE_WORKING_DIRECTORY/.privado.env
+            echo "PRIVADO_BASE_PATH=$PRIVADO_BASE_PATH" >> $CIRCLE_WORKING_DIRECTORY/.privado.env
+            echo "PRIVADO_CI_PLATFORM=CIRCLECI" >> $CIRCLE_WORKING_DIRECTORY/.privado.env
+            echo "PRIVADO_REPOSITORY_ID=$CIRCLE_PROJECT_REPONAME" >> $CIRCLE_WORKING_DIRECTORY/.privado.env
+            echo "PRIVADO_REPOSITORY_NAME=${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}" >> $CIRCLE_WORKING_DIRECTORY/.privado.env
+            echo "PRIVADO_COMMIT_ID=$CIRCLE_SHA1" >> $CIRCLE_WORKING_DIRECTORY/.privado.env
+            echo "PRIVADO_BRANCH_NAME=$CIRCLE_BRANCH" >> $CIRCLE_WORKING_DIRECTORY/.privado.env
+            echo "PRIVADO_DEFAULT_BRANCH_NAME=$CIRCLE_BRANCH" >> $CIRCLE_WORKING_DIRECTORY/.privado.env
+            echo "PRIVADO_REPOSITORY_URL=${CIRCLE_REPOSITORY_URL}" >> $CIRCLE_WORKING_DIRECTORY/.privado.env
+
+            # Adapt this section to match the environment variable setup in CircleCI
+
+            # Run Docker container with environment variables
+            docker run -t -v $CIRCLE_WORKING_DIRECTORY:$CIRCLE_WORKING_DIRECTORY:rw \
+              -v /var/run/docker.sock:/var/run/docker.sock \
+              --env-file $CIRCLE_WORKING_DIRECTORY/.privado.env \
+              638117407428.dkr.ecr.eu-west-1.amazonaws.com/scanner-agent:latest
     # - deploy:
     #     requires:
     #       - test-java
