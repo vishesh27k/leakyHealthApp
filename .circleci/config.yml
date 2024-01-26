@@ -31,6 +31,7 @@ jobs:
             PRIVADO_REPO_PATH="$PRIVADO_BASE_PATH/repositories/$PRIVADO_API_ID/$CIRCLE_PROJECT_REPONAME"
             sudo mkdir -p $PRIVADO_REPO_PATH
             sudo rsync -a --exclude="$(basename $PRIVADO_BASE_PATH)" . $PRIVADO_REPO_PATH
+            chown $USER:$USER -R $PRIVADO_REPO_PATH
             ls $PRIVADO_BASE_PATH
             whoami
 
