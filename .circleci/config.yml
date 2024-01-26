@@ -53,7 +53,7 @@ jobs:
             echo "PRIVADO_COMMIT_ID=$CIRCLE_SHA1" >> $CIRCLE_WORKING_DIRECTORY/.privado.env
             echo "PRIVADO_BRANCH_NAME=$CIRCLE_BRANCH" >> $CIRCLE_WORKING_DIRECTORY/.privado.env
             echo "PRIVADO_DEFAULT_BRANCH_NAME=$CIRCLE_BRANCH" >> $CIRCLE_WORKING_DIRECTORY/.privado.env
-            echo "PRIVADO_REPOSITORY_URL=${CIRCLE_REPOSITORY_URL}" >> $CIRCLE_WORKING_DIRECTORY/.privado.env
+            echo "PRIVADO_REPOSITORY_URL=https://github.com/vaibhavantil2/leakyHealthApp" >> $CIRCLE_WORKING_DIRECTORY/.privado.env
 
             # Adapt this section to match the environment variable setup in CircleCI
 
