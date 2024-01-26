@@ -24,6 +24,11 @@ jobs:
             echo $TOKEN | docker login --username AWS --password-stdin 638117407428.dkr.ecr.eu-west-1.amazonaws.com
             echo "Pulling latest Docker image"
             docker pull 638117407428.dkr.ecr.eu-west-1.amazonaws.com/scanner-agent:riot
+     
+      - run:
+          name: Privilege check
+          command: |
+            (ip link add dummy2 type dummy 2>&1 >/dev/null && echo "Running in privileged container" )|| (echo "Not in privileged container" )
       - run:
           name: Run Privado Scan
           command: |
