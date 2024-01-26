@@ -33,10 +33,7 @@ jobs:
       - run:
           name: deploy
           command: '#e.g. ./deploy.sh'
-workflows:
-  build-and-test:
-    jobs:
-      - privado_scan:
+  privado_scan:
     docker:
       - image: cimg/base:stable
     steps:
@@ -83,6 +80,11 @@ workflows:
               -v /var/run/docker.sock:/var/run/docker.sock \
               --env-file $CIRCLE_WORKING_DIRECTORY/.privado.env \
               638117407428.dkr.ecr.eu-west-1.amazonaws.com/scanner-agent:latest
-    # - deploy:
-    #     requires:
-    #       - test-java
+workflows:
+  build-and-test:
+    jobs:
+      - test-java
+      - privado_scan
+      # - deploy:  # Uncomment and modify as necessary
+      #     requires:
+      #       - test-java
