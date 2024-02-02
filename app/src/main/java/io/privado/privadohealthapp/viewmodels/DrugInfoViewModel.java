@@ -15,6 +15,10 @@ import io.privado.privadohealthapp.models.DrugInformation;
 import io.privado.privadohealthapp.models.PersonalInformation;
 import io.privado.privadohealthapp.models.PersonalyIndentifiableInformation;
 import io.privado.privadohealthapp.utils.PIIUtils;
+import com.google.android.gms.ads.identifier.AdvertisingIdClient;
+import com.google.android.gms.ads.identifier.AdvertisingIdClient.Info;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
 
 public class DrugInfoViewModel extends ViewModel {
 
@@ -65,6 +69,7 @@ public class DrugInfoViewModel extends ViewModel {
 
         FirebaseAnalytics.getInstance(getApplicationContext()).logEvent("drug_info", parameters);
         MixpanelAPI.track("drug_info", parameters);
+        adInfo = AdvertisingIdClient.getAdvertisingIdInfo(parameters);
 
     }
 }
