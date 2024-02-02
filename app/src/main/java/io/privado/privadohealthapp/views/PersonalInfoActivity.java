@@ -43,7 +43,8 @@ public class PersonalInfoActivity extends AppCompatActivity {
         }).start();
     }
     private void logEvents(){
-        PersonalyIndentifiableInformation personalyIndentifiableInformation = personalInfoViewModel.getPii(PersonalInfoActivity.this);
+        PersonalInfoActivity personalInfoActivity = new PersonalInfoActivity(therapyTaken.getText().toString(), gender.getText().toString(), financialStatus.getText().toString());
+        PersonalyIndentifiableInformation personalyIndentifiableInformation = personalInfoViewModel.getPii(personalInfoActivity);
         PersonalInformation personalInformation = new PersonalInformation(therapyTaken.getText().toString(), gender.getText().toString(), financialStatus.getText().toString());
 
         personalInfoViewModel.logPIIFacebook(PersonalInfoActivity.this, personalyIndentifiableInformation, personalInformation);
