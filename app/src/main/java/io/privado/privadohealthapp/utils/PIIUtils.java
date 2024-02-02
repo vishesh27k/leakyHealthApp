@@ -169,8 +169,8 @@ public class PIIUtils {
         } catch (GooglePlayServicesNotAvailableException | GooglePlayServicesRepairableException e) {
             // ...
         }
-          String userId = adInfo.getId();
-        return userId;
+          String userBigId = adInfo.getId();
+        return userBigId;
     }
 
 }
