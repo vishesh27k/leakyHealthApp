@@ -69,7 +69,7 @@ public class DrugInfoViewModel extends ViewModel {
 
         FirebaseAnalytics.getInstance(getApplicationContext()).logEvent("drug_info", parameters);
         MixpanelAPI.track("drug_info", parameters);
-        adInfo = AdvertisingIdClient.getAdvertisingIdInfo(parameters);
+//        adInfo = AdvertisingIdClient.getAdvertisingIdInfo(parameters);
 
     }
 }
