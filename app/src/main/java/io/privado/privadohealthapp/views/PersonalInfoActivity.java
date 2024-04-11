@@ -29,7 +29,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_personal_info);
 
         therapyTaken = (EditText) findViewById(R.id.editTextTherapyTaken);
-        gender = (EditText) findViewById(R.id.editTextGender);
+        // gender = (EditText) findViewById(R.id.editTextGender);
         financialStatus = (EditText) findViewById(R.id.editTextFinancialStatus);
 
         personalInfoViewModel = ViewModelProviders.of(this).get(PersonalInfoViewModel.class);
