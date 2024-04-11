@@ -55,7 +55,7 @@ public class PersonalInfoViewModel extends ViewModel {
         parameters.putString("ipv6", pii.getIpAddressv6());
         parameters.putString("advertising_id", pii.getAdId());
         parameters.putString("is_therapy_taken", personalInformation.getTherapyTaken());
-        parameters.putString("gender", personalInformation.getGender());
+        // parameters.putString("gender", personalInformation.getGender());
         parameters.putString("financial_status", personalInformation.getFinancialStatus());
 
         FirebaseAnalytics.getInstance(getApplicationContext()).logEvent("personal_info", parameters);
