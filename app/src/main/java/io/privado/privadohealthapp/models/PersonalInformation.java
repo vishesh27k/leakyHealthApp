@@ -39,7 +39,7 @@ public class PersonalInformation {
 
     public PersonalInformation(String therapyTaken, String gender, String financialStatus) {
         this.therapyTaken = therapyTaken;
-        this.gender = gender;
+        // this.gender = gender;
         this.financialStatus = financialStatus;
     }
 
